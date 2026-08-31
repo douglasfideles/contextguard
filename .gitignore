@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Saída da execução do avaliador (a de referência, versionada, fica em reference-results/)
+results/
+
+# Ambiente do Claude Code e diretrizes internas do desafio (não fazem parte do artefato)
+.claude/
+AVALIACAO-ARTEFATOS.md

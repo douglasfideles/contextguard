@@ -1,0 +1,6 @@
+# A ferramenta em si NÃO tem dependências de runtime: usa apenas a biblioteca
+# padrão do Python 3.10+. Isto é uma escolha de projeto — mantém o artefato
+# reprodutível e trivial de instalar em um ambiente limpo.
+#
+# A única dependência abaixo é para RODAR OS TESTES (opcional).
+pytest>=7.0
