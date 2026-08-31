@@ -20,9 +20,7 @@ ContextGuard detém **6/6** — negando o fragmento crítico antes da entrega �
 negativo**, três ataques adaptativos (diluição, paráfrase e autoridade
 declarada) que **derrotam** o ContextGuard, e explicamos por quê.
 
-📄 **O relatório da entrega está em [RELATORIO.md](RELATORIO.md)** — o que foi
-construído, como defini "sucesso do ataque" e por quê, o quão bem funciona, e
-onde parei. Leia-o junto com este README.
+📄 **O relatório da entrega está em [RELATORIO.md](RELATORIO.md).**
 
 ---
 
@@ -182,13 +180,31 @@ com estado), turno a turno. Um **alvo simulado** entrega um "fragmento de
 capacidade" a cada turno que não for bloqueado. Um **critério** afere se o ataque
 completou o objetivo. Um **relatório** gera as tabelas comparativas.
 
-**Ambiente de execução (requisitos).**
+**Máquina necessária para reproduzir (mínimo).** Qualquer computador comum —
+o artefato é leve e não depende de hardware específico.
 
-- **SO**: Linux, macOS ou Windows. Testado em Ubuntu 24.04 sob WSL2.
-- **Python** 3.10 ou superior (para a via de instalação local).
-- **Docker** Engine ≥ 24 com Compose v2 (para a via Docker). Testado com Docker 29.
-- **CPU/RAM/Disco**: mínimos. O experimento completo roda em **< 5 segundos** e
-  usa **< 100 MB de RAM** e alguns MB de disco. Sem GPU, sem nuvem, sem rede.
+- **SO**: Linux, macOS ou Windows.
+- **Uma das duas vias:**
+  - **Docker** Engine ≥ 24 com Compose v2 — *nada mais a instalar*; ou
+  - **Python 3.10+** (para rodar direto na máquina).
+- **CPU/RAM/Disco**: mínimos. Sem GPU, sem nuvem, sem rede. O experimento
+  completo roda em **~3 segundos** e usa **~16 MB de RAM** e poucos MB de disco.
+
+**Máquina onde foi de fato reproduzido.** Os números de `reference-results/` e a
+verificação por clone limpo foram obtidos aqui:
+
+| Item | Valor |
+|---|---|
+| SO | Ubuntu 24.04.4 LTS sob **WSL2** (kernel 6.6.87-microsoft-standard) |
+| CPU | Intel Core i7-7700HQ @ 2.80 GHz (2 vCPUs alocados ao WSL) |
+| RAM | 5.8 GB alocados ao WSL |
+| Python | 3.12.3 |
+| Docker | 29.3.1 + Compose v2 |
+| Tempo do `experiment` | ~2.6 s (parede) · ~16 MB de pico de RAM |
+
+> Como a ferramenta é **determinística** (só biblioteca padrão, sem
+> aleatoriedade/rede/relógio), a saída é idêntica em qualquer máquina acima do
+> mínimo — não apenas nesta.
 
 **Recursos de terceiros:** **nenhum.** O artefato é autocontido — não requer
 chaves de API, credenciais nem acesso a serviços externos. **Não há apêndice de
