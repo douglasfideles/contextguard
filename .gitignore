@@ -12,6 +12,3 @@ results/
 # Ambiente do Claude Code e diretrizes internas do desafio (não fazem parte do artefato)
 .claude/
 AVALIACAO-ARTEFATOS.md
-
-# Relatorio da entrega mantido fora do versionamento a pedido
-RELATORIO.md

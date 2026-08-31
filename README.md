@@ -20,8 +20,8 @@ ContextGuard detém **6/6** — negando o fragmento crítico antes da entrega �
 negativo**, três ataques adaptativos (diluição, paráfrase e autoridade
 declarada) que **derrotam** o ContextGuard, e explicamos por quê.
 
-📄 **O relatório da entrega (`RELATORIO.md`) acompanha esta submissão** — o que
-foi construído, como defini "sucesso do ataque" e por quê, o quão bem funciona, e
+📄 **O relatório da entrega está em [RELATORIO.md](RELATORIO.md)** — o que foi
+construído, como defini "sucesso do ataque" e por quê, o quão bem funciona, e
 onde parei. Leia-o junto com este README.
 
 ---
