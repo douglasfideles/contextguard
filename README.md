@@ -139,8 +139,7 @@ ContextGuard com a memória desligada — o resultado passa a ser igual ao basel
 
 ## Estrutura do readme.md
 
-Este README segue o modelo obrigatório do CTA/SBRC e contém as seções:
-**Título e Resumo**, **Estrutura**, **Selos Considerados**,
+Este README contém as seções: **Título e Resumo**, **Estrutura**,
 **Informações básicas**, **Dependências**, **Preocupações com segurança**,
 **Instalação** (Docker e máquina local), **Teste mínimo**, **Experimentos** (uma
 subseção por reivindicação) e **LICENSE**.
@@ -157,7 +156,7 @@ contextguard/
 ├── run.sh                     # atalho para rodar sem Docker
 ├── requirements.txt           # runtime: nenhuma; testes: pytest
 ├── docs/
-│   └── ARQUITETURA.md         # fluxo de dados + mapa de arquivos (SeloS)
+│   └── ARQUITETURA.md         # fluxo de dados + mapa de arquivos
 ├── src/contextguard/          # a ferramenta (ver docs/ARQUITETURA.md)
 │   ├── model.py  features.py  state.py  policy.py  loader.py
 │   ├── target.py  arena.py  criterion.py  report.py  __main__.py
@@ -172,22 +171,6 @@ contextguard/
 ├── tests/                     # pytest (detectores, arena, critério, isolamento)
 └── reference-results/         # saída congelada da minha execução (para comparar)
 ```
-
----
-
-## Selos Considerados
-
-Os selos considerados são: **Disponíveis (SeloD)**, **Funcionais (SeloF)**,
-**Sustentáveis (SeloS)** e **Experimentos Reprodutíveis (SeloR)**.
-
-- **SeloD** — código, cenários, dados de referência e este README em repositório
-  público.
-- **SeloF** — `./run.sh demo` (ou o equivalente em Docker) exercita a
-  funcionalidade ponta a ponta em segundos; a saída está em [Teste mínimo](#teste-mínimo).
-- **SeloS** — código modular, cada peça com um propósito único e mapeável às
-  reivindicações; ver [docs/ARQUITETURA.md](docs/ARQUITETURA.md).
-- **SeloR** — `experiment` regenera as **cinco tabelas** das reivindicações;
-  tudo é determinístico e conferível contra `reference-results/`.
 
 ---
 

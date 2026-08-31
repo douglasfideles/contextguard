@@ -1,8 +1,8 @@
 # Arquitetura do ContextGuard
 
-Documento de apoio ao **SeloS** (artefato sustentável): descreve os arquivos, as
-funções principais e o fluxo de dados, para que um revisor consiga mapear cada
-reivindicação do relatório ao código.
+Documento de apoio: descreve os arquivos, as funções principais e o fluxo de
+dados, para que um revisor consiga mapear cada reivindicação do relatório ao
+código.
 
 ## Ideia em uma frase
 
