@@ -1,0 +1,7 @@
+detector removido,ataques bloqueados,crítico contido a tempo,Δ contido,falsos positivos
+(nenhum),6/6,6/6,—,0/12
+sem composition,0/6,0/6,-6,0/12
+sem escalation,3/6,3/6,-3,0/12
+sem target_persistence,6/6,6/6,0,0/12
+sem frame_shift,6/6,6/6,0,0/12
+sem chaining,6/6,6/6,0,0/12
