@@ -1,0 +1,16 @@
+# Uso:
+#   docker compose run --rm contextguard demo
+#   docker compose run --rm contextguard experiment
+#   docker compose run --rm contextguard list
+#   docker compose run --rm --entrypoint pytest contextguard -q
+#
+# O volume mapeia ./results do host para o contêiner, para que as tabelas
+# geradas por `experiment` fiquem acessíveis fora dele.
+
+services:
+  contextguard:
+    build: .
+    image: contextguard:latest
+    volumes:
+      - ./results:/app/results
+    # Sem portas, sem rede externa necessária: o artefato não fala com a internet.
