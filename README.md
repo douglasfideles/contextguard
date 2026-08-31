@@ -28,24 +28,46 @@ onde parei. Leia-o junto com este README.
 
 ## Verificação rápida (comece por aqui)
 
-Este artefato foi feito para ser **testado em segundos**. São três comandos —
-escolha a coluna Docker **ou** a local. Cada um confirma uma coisa:
+Este artefato foi feito para ser **testado em segundos**, em qualquer computador,
+**copiando e colando**. São três comandos — escolha **uma** das duas vias:
 
-| Passo | Docker | Máquina local | Confirma |
+- **Via Docker (zero instalação):** precisa só de Docker. Nada de Python, nada de
+  `pip`. Rode `docker compose build` uma vez e use os comandos da coluna Docker.
+- **Via local:** precisa de **Python 3.10+** (quase sempre já instalado).
+  `demo` e `experiment` não instalam **nada** (só biblioteca padrão); apenas os
+  **testes** pedem o pytest — um `pip install` (ver Passo 1).
+
+| Passo | Docker (nada a instalar) | Máquina local (Python 3.10+) | Confirma |
 |---|---|---|---|
-| **1. Testes** | `docker compose run --rm --entrypoint pytest contextguard -q` | `./run.sh testes` | 19 testes passam (inclui o teste de **isolamento**: a defesa não vê o objetivo) |
+| **1. Testes** | `docker compose run --rm --entrypoint pytest contextguard -q` | `pip install -r requirements.txt && ./run.sh testes` | 19 testes passam (inclui o teste de **isolamento**: a defesa não vê o objetivo) |
 | **2. Demonstração** | `docker compose run --rm contextguard demo` | `./run.sh demo` | o baseline deixa passar; o ContextGuard **bloqueia com evidência** |
 | **3. Experimento** | `docker compose run --rm contextguard experiment` | `./run.sh experiment` | gera as **5 tabelas**; reprodutível bit a bit |
 
-Se estiver com pressa, rode **os três em sequência** e depois confira a
-reprodutibilidade:
+**Cópia-e-cola completa (via Docker — funciona em qualquer máquina com Docker):**
 
 ```bash
-./run.sh testes
+git clone https://github.com/douglasfideles/contextguard && cd contextguard
+docker compose build
+docker compose run --rm contextguard demo          # ataque vs. defesa, turno a turno
+docker compose run --rm contextguard experiment    # gera as 5 tabelas em results/
+docker compose run --rm --entrypoint pytest contextguard -q   # 19 testes
+diff -r results/ reference-results/                 # vazio = reproduziu idêntico
+```
+
+**Cópia-e-cola completa (via local — precisa de Python 3.10+):**
+
+```bash
+git clone https://github.com/douglasfideles/contextguard && cd contextguard
 ./run.sh demo
 ./run.sh experiment
-diff -r results/ reference-results/   # vazio = idêntico à minha execução
+diff -r results/ reference-results/                 # vazio = reproduziu idêntico
+pip install -r requirements.txt && ./run.sh testes  # (opcional) roda os 19 testes
 ```
+
+> **Determinismo.** A ferramenta não usa aleatoriedade, rede, relógio nem nada
+> dependente da máquina — só a biblioteca padrão do Python. Por isso `experiment`
+> gera **exatamente** os mesmos números em qualquer computador, e o `diff` acima
+> deve vir **vazio**. Verifiquei isso a partir de um clone limpo.
 
 ### Passo 1 — testes (`./run.sh testes`)
 
