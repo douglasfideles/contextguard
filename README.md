@@ -24,8 +24,36 @@ declarada) que **derrotam** o ContextGuard, e explicamos por quê.
 
 ---
 
+## Rodar agora (copiar e colar)
+
+**Com Docker** (não instala nada além do Docker) — cole o bloco inteiro:
+
+```bash
+git clone https://github.com/douglasfideles/contextguard
+cd contextguard
+docker compose build
+docker compose run --rm contextguard demo          # ataque vs. defesa, turno a turno
+docker compose run --rm contextguard experiment    # gera as 5 tabelas em results/
+```
+
+**Sem Docker** (precisa só de Python 3.10+) — cole o bloco inteiro:
+
+```bash
+git clone https://github.com/douglasfideles/contextguard
+cd contextguard
+./run.sh demo
+./run.sh experiment
+```
+
+Pronto — o `demo` mostra a defesa detendo o ataque e o `experiment` gera as
+tabelas. Os detalhes (testes, explorar cenários, cada reivindicação) estão
+abaixo.
+
+---
+
 ## Índice
 
+0. [Rodar agora (copiar e colar)](#rodar-agora-copiar-e-colar)
 1. [O que dá para fazer](#o-que-dá-para-fazer)
 2. [Como rodar — com Docker](#como-rodar--com-docker)
 3. [Como rodar — sem Docker (Python)](#como-rodar--sem-docker-python)
@@ -142,12 +170,20 @@ Saída esperada em [O que você vê no `demo`](#o-que-você-vê-no-demo).
 diff -r results/ reference-results/     # vazio = reproduziu idêntico ao meu
 ```
 
-### Passo 3 — testes (opcional; instala o pytest só aqui)
+### Passo 3 — testes (opcional; única etapa que instala algo)
+
+Use um **ambiente virtual** (funciona em qualquer sistema, inclusive Ubuntu
+24.04/Debian, onde `pip install` fora de venv é bloqueado):
 
 ```bash
+python3 -m venv .venv
+. .venv/bin/activate
 pip install -r requirements.txt
 ./run.sh testes
 ```
+
+> Não quer instalar nada? Rode os testes **via Docker** (o pytest já vem na
+> imagem): `docker compose run --rm --entrypoint pytest contextguard -q`.
 
 ### Passo 4 — explorar por conta própria (opcional)
 
